@@ -1,6 +1,19 @@
 pipeline {
     agent any 
     stages {
+        stage('Set Up Python Environment') {
+            steps {
+                // Install Python and pip (if not already available on your Jenkins agent)
+                bat 'python -m venv venv'
+                bat 'venv\\Scripts\\pip install --upgrade pip'
+            }
+        }
+        stage('Install Dependencies') {
+            steps {
+                // Activate the virtual environment and install pytest
+                bat 'venv\\Scripts\\pip install pytest'
+            }
+        }
         stage('Build') { 
             steps {
                 bat 'python -m py_compile sources/add2vals.py sources/calc.py' 
