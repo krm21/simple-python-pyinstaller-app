@@ -5,7 +5,7 @@ pipeline {
             steps {
                 // Install Python and pip (if not already available on your Jenkins agent)
                 bat 'python -m venv venv'
-                bat 'venv\\Scripts\\pip install --upgrade pip'
+                bat 'venv\\Scripts\\python -m pip install --upgrade pip'
             }
         }
         stage('Install Dependencies') {
