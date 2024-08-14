@@ -22,7 +22,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                bat 'python -m pytest --junit-xml test-reports/results.xml sources/test_calc.py'
+                bat 'venv\\Scripts\\python -m pytest --junit-xml test-reports/results.xml sources/test_calc.py'
             }
             post {
                 always {
